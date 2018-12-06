@@ -4,14 +4,13 @@ import sys
 import subprocess
 
 modulename = sys.argv[1]
-print modulename,'++++++++++++++'
 
 
 def getAllModule():
-    ModuleList = os.popen('pip list').read()
-    strModule = ''.join(map(str, ModuleList))
-    print strModule
-    if modulename not in strModule:
+    modulelist = os.popen('pip list').read()
+    strmodule = ''.join(map(str, modulelist))
+    print strmodule
+    if modulename not in strmodule:
         try:
             cmd = 'pip install ' + modulename
             data = subprocess.Popen(cmd, shell=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
